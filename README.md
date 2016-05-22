@@ -107,7 +107,7 @@ $ require_relative 'nuvi-news-parser'
 $ NewsParser.run('http://bitly.com/nuvi-plz')
 ```
 
-## Future Work
+## Future Works
 
 * Running locally, with 25 workers, i7 processor and 4Gb RAM, the parser is able to process ~1k news/second. However, to acquire a more reliable metric, benchmark tests must be added;
 * Since HTTP folder content is dynamic, a nice enhancement would be to transform the parser module in a daemon, which will be pooling the HTTP folder for new zip files and sending them automatically to Sidekiq;
