@@ -1,0 +1,10 @@
+app:
+  image: ruby:2.3.1
+  working_dir: /root/news-parser
+  volumes:
+    - .:/root/news-parser
+  links:
+    - redis
+
+redis:
+  image: redis:3.2.0
