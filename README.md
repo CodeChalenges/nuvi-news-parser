@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/mauricioklein/nuvi-news-parser.svg?branch=master)](https://travis-ci.org/mauricioklein/nuvi-news-parser)
+[![Code Climate](https://codeclimate.com/github/mauricioklein/nuvi-news-parser/badges/gpa.svg)](https://codeclimate.com/github/mauricioklein/nuvi-news-parser)
+[![Test Coverage](https://codeclimate.com/github/mauricioklein/nuvi-news-parser/badges/coverage.svg)](https://codeclimate.com/github/mauricioklein/nuvi-news-parser/coverage)
+[![Issue Count](https://codeclimate.com/github/mauricioklein/nuvi-news-parser/badges/issue_count.svg)](https://codeclimate.com/github/mauricioklein/nuvi-news-parser)
+
 # Nuvi News Parser
 
 **Nuvi news parser** is a parser, written in Ruby, that automate the action of downloading zip files from a web page and index its content in Redis.
