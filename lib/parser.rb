@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
-require_relative './workers/config_sidekiq'
+require_relative 'workers/zip_worker'
 
 module Parser
   def self.run(http_directory_path)

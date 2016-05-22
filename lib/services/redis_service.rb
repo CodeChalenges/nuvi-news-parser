@@ -1,4 +1,5 @@
 require 'singleton'
+require 'redis'
 
 class RedisService
   include Singleton
