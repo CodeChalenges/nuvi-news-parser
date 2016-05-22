@@ -12,16 +12,32 @@ RSpec.describe ZipWorker do
   let(:xml_hash) { '123456' }
 
   context "perform" do
-    it { expect(redis_service.zip_already_processed?(zip_hash)).to be false }
-    it { expect(redis_service.news_already_processed?(xml_hash)).to be false }
-    it { expect(redis_client.llen(RedisService.news_list)).to be_zero }
+    it "zip is not processed yet" do
+      expect(redis_service.zip_already_processed?(zip_hash)).to be false
+    end
+
+    it "news is not processed yet" do
+      expect(redis_service.news_already_processed?(xml_hash)).to be false
+    end
+
+    it "news list is empty" do
+      expect(redis_client.llen(RedisService.news_list)).to be_zero
+    end
 
     context "process xml file" do
       before { worker.perform(zip_location) }
 
-      it { expect(redis_service.zip_already_processed?(zip_hash)).to be true  }
-      it { expect(redis_service.news_already_processed?(xml_hash)).to be true }
-      it { expect(redis_client.llen(RedisService.news_list)).to eq(1) }
+      it "mark zip as processed" do
+        expect(redis_service.zip_already_processed?(zip_hash)).to be true
+      end
+
+      it "mark news as processed" do
+        expect(redis_service.news_already_processed?(xml_hash)).to be true
+      end
+
+      it "send news content to Redis queue" do
+        expect(redis_client.llen(RedisService.news_list)).to eq(1)
+      end
 
       it "don't duplicate news" do
         worker.perform(zip_location)

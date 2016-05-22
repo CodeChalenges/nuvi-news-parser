@@ -13,7 +13,9 @@ RSpec.describe NewsParser do
   # Enable Sidekiq fake mode (push all jobs in an array instead of Redis)
   before { Sidekiq::Testing.fake! }
 
-  it { expect(ZipWorker.jobs.size).to be_zero }
+  it "don't have any pending job" do
+    expect(ZipWorker.jobs.size).to be_zero
+  end
 
   context "run" do
     before { NewsParser.run(http_directory_path) }
