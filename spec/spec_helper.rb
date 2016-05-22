@@ -1,6 +1,7 @@
 require "securerandom"
 require "fakeredis"
 require "sidekiq/testing"
+require "codeclimate-test-reporter"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -23,3 +24,5 @@ end
 # Disable Sidekiq log in testing mode
 Sidekiq::Logging.logger = nil
 
+# Code climate report
+CodeClimate::TestReporter.start

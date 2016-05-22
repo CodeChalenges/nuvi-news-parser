@@ -18,4 +18,7 @@ group :test, :development do
 
   # InMemory Redis (testing purposes)
   gem "fakeredis", '~> 0.5', require: "fakeredis/rspec"
+
+  # Code Climate report
+  gem "codeclimate-test-reporter", require: nil
 end
