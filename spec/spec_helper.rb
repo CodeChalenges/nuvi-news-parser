@@ -13,9 +13,10 @@ RSpec.configure do |config|
 
   config.order = :random
 
-  # Cleanup Redis before running next spec
+  # Cleanup Redis and Sidekiq queue before running next spec
   config.before(:all) do
     RedisService.instance.redis_client.flushall
+    Sidekiq::Worker.clear_all
   end
 end
 
