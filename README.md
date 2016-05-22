@@ -74,20 +74,40 @@ So, to start Sidekiq server in background mode:
 $ bundle exec sidekiq -r ./config/sidekiq.rb -L logs/sidekiq.log -d
 ```
 
-Sidekiq logs will be saved in *logs/sidekiq.log*.
+Sidekiq and workers logs will be saved in *logs/sidekiq.log*.
+
+Sidekiq PID, as well the number of busy and total workers, can be found with *ps* command:
+
+```sh
+$ ps aux | grep sidekiq | grep -v grep
+```
 
 > By default, Sidekiq starts with **25 workers**. This number can be adjusted with the argument *-c [number of workers]*
 
-And finally, to run the parser, dispatch a new IRB session...
+Since parser is built as a Ruby module, we need a Ruby environment to dispatch it. So:
 
 ```sh
 $ irb
 ```
 
-... require parser and run it:
+Redis server can be refered by the hostname **redis**, port **6379**. So, to connect to Redis using [Redis Ruby client](https://github.com/redis/redis-rb):
+
+```ruby
+$ require 'redis'
+
+# Redis will hold a connection to Redis server
+$ redis = Redis.new(host: 'redis', port: 6379)
+```
+
+And finally, to run the parser:
 
 ```ruby
 $ require_relative 'nuvi-news-parser'
 
 $ NewsParser.run('http://bitly.com/nuvi-plz')
 ```
+
+## Future Works
+
+* Running locally, with 25 workers, i7 processor and 4Gb RAM, the parser is able to process ~1k news/second. However, to acquire a more reliable metric, benchmark tests must be added;
+* Since HTTP folder content is dynamic, a nice enhancement would be to transform the parser module in a daemon, which will be pooling the HTTP folder for new zip files and sending them automatically to Sidekiq;
