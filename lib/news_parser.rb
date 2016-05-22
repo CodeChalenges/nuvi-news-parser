@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require_relative 'workers/zip_worker'
 
-module Parser
+module NewsParser
   def self.run(http_directory_path)
     # Page load
     page = open(http_directory_path)
@@ -23,5 +23,7 @@ module Parser
       zip_full_path = URI.join(base_uri, entry['href']).to_s
       ZipWorker.perform_async(zip_full_path)
     end
+
+    return true
   end
 end

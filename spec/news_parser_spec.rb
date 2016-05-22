@@ -1,7 +1,7 @@
 require "spec_helper"
-require "parser"
+require "news_parser"
 
-RSpec.describe Parser do
+RSpec.describe NewsParser do
   let(:http_directory_path)  { 'http://bitly.com/nuvi-plz' }
   let(:expected_zip_entries) {
     Nokogiri::HTML(open(http_directory_path))
@@ -16,7 +16,7 @@ RSpec.describe Parser do
   it { expect(ZipWorker.jobs.size).to be_zero }
 
   context "run" do
-    before { Parser.run(http_directory_path) }
+    before { NewsParser.run(http_directory_path) }
 
     it "creates a job for each zip entry" do
       expect(ZipWorker.jobs.size).to eq(expected_zip_entries)
