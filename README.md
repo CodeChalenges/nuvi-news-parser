@@ -8,8 +8,8 @@ This project depends on:
 
 * Ruby v2.3.1 or above;
 * Redis v3.2.0 or above;
-* Docker v1.9.1 or above;
-* Docker Compose v1.2.0 or above;
+* [Docker](https://docs.docker.com/engine/installation/) v1.9.1 or above;
+* [Docker Compose](https://docs.docker.com/compose/install/) v1.2.0 or above;
 
 ## Architecture
 
@@ -30,6 +30,7 @@ So, the basic workflow is:
 ## Environment
 
 The whole environment is prepared using *Docker*.
+
 This choice was made aiming an easy way to lift all necessary dependencies, without needing to deal with version and configuration related problems.
 
 So, to lift the project + Redis server, go to project root path and run:
@@ -68,7 +69,9 @@ So, to start Sidekiq server in background mode:
 $ bundle exec sidekiq -r ./config/sidekiq.rb -L logs/sidekiq.log -d
 ```
 
-Sidekiq logs will be saved in *logs/sidekiq.log*
+Sidekiq logs will be saved in *logs/sidekiq.log*.
+
+> By default, Sidekiq starts with **25 workers**. This number can be adjusted with the argument *-c [number of workers]*
 
 And finally, to run the parser, dispatch a new IRB session...
 
