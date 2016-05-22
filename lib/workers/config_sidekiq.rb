@@ -12,4 +12,4 @@ Sidekiq.configure_client do |config|
 end
 
 # Logging config
-Sidekiq::Logging.logger.level = Logger::DEBUG
+Sidekiq::Logging.logger.level = Logger::INFO
