@@ -1,5 +1,5 @@
 require 'sidekiq'
-require_relative 'zip_worker'
+require_relative '../lib/workers/zip_worker'
 
 # Sidekiq server setup
 Sidekiq.configure_server do |config|
