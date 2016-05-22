@@ -1,6 +1,7 @@
 require "securerandom"
 require "fakeredis"
 require "sidekiq/testing"
+require "simplecov"
 require "codeclimate-test-reporter"
 
 RSpec.configure do |config|
@@ -15,7 +16,7 @@ RSpec.configure do |config|
   config.order = :random
 
   # Cleanup Redis and Sidekiq queue before running next spec
-  config.before(:all) do
+  config.before(:each) do
     RedisService.instance.redis_client.flushall
     Sidekiq::Worker.clear_all
   end
@@ -26,3 +27,6 @@ Sidekiq::Logging.logger = nil
 
 # Code climate report
 CodeClimate::TestReporter.start
+
+# SimpleCov configuration
+SimpleCov.start

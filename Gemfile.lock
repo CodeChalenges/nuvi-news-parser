@@ -42,12 +42,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  codeclimate-test-reporter
+  codeclimate-test-reporter (~> 0.5)
   fakeredis (~> 0.5)
   nokogiri (~> 1.6.7)
   rspec (~> 3.4)
   rubyzip (~> 1.2)
   sidekiq (~> 4.1)
+  simplecov (~> 0.11)
 
 RUBY VERSION
    ruby 2.3.1p112
