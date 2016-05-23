@@ -5,7 +5,7 @@
 
 # Nuvi News Parser
 
-**Nuvi news parser** is a parser, written in Ruby, that automate the action of downloading zip files from a web page and index its content in Redis.
+**Nuvi news parser** is a parser, written in Ruby, that automate the action of downloading zip files from a web page and indexing its content in Redis.
 
 ## Dependencies
 
