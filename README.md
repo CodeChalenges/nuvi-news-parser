@@ -2,6 +2,7 @@
 [![Code Climate](https://codeclimate.com/github/mauricioklein/nuvi-news-parser/badges/gpa.svg)](https://codeclimate.com/github/mauricioklein/nuvi-news-parser)
 [![Test Coverage](https://codeclimate.com/github/mauricioklein/nuvi-news-parser/badges/coverage.svg)](https://codeclimate.com/github/mauricioklein/nuvi-news-parser/coverage)
 [![Issue Count](https://codeclimate.com/github/mauricioklein/nuvi-news-parser/badges/issue_count.svg)](https://codeclimate.com/github/mauricioklein/nuvi-news-parser)
+[![Dependency Status](https://gemnasium.com/badges/github.com/mauricioklein/nuvi-news-parser.svg)](https://gemnasium.com/github.com/mauricioklein/nuvi-news-parser)
 
 # Nuvi News Parser
 
